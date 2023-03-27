@@ -10,17 +10,15 @@ import z from 'zod';
 app.use(bodyParser.json());
 
 app.get('/health', (req, res) => {
-  console.log(db);
   return res.json({message:'Up and running',status:'Okay'})
 });
 
 app.get('/vehicle', (req, res) => {
-  console.log(db);
         db.vehicle.findAll({
         include: [{model: db.categories,include: [
           {model: db.schedule}
         ] }]
-    }).then((result: object) => res.json(result)).catch((err: object) => console.error(err));
+    }).then((result: object) => res.status(200).json(result)).catch((err: object) => console.error(err));
 });
 
 
