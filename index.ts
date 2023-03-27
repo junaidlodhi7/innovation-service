@@ -57,8 +57,6 @@ app.post('/vehicle', async (req, res) => {
 });
 
 
-
-
 db.sequelize.sync().then(() => {
     app.listen(port, () => {
         console.log(`App listening on port ${port}`)
